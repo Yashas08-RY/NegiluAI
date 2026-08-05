@@ -1,2 +1,2 @@
 # NegiluAI
-NegiluAI: Design and Development of a Web-Based Agricultural Marketplace System with Predictive Analytics
+NegiluAI: AI-Powered Agricultural Marketplace and Rural Supply Chain Platform

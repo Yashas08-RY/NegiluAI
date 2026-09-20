@@ -18,10 +18,30 @@ Including another URLconf
 # goes to your RegisterView
 # wejust created our first API route 
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from rest_framework_simplejwt.views import TokenRefreshView
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
+
+def root_status(_request):
+    """A small health response for the backend root URL."""
+    return JsonResponse({"status": "ok", "service": "NegiluAI API"})
 
 urlpatterns = [
+    path("", root_status, name="root-status"),
     path("admin/", admin.site.urls),
     path("api/", include("users.urls")),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/schema/", SpectacularAPIView.as_view(), name="openapi-schema"),
+    path("api/docs/", SpectacularSwaggerView.as_view(url_name="openapi-schema"), name="swagger-ui"),
     path("api/products/", include("products.urls")),
+    path("api/wishlist/", include("products.wishlist_urls")),
+    path("api/", include("orders.urls")),
+    path("api/dashboard/", include("dashboard.urls")),
+    path("api/", include("dashboard.urls")),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

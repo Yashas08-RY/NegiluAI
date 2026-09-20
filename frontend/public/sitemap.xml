@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://negiluai.example/</loc></url>
+  <url><loc>https://negiluai.example/products</loc></url>
+  <url><loc>https://negiluai.example/marketplace-info</loc></url>
+  <url><loc>https://negiluai.example/crop-recommendation-info</loc></url>
+  <url><loc>https://negiluai.example/price-prediction-info</loc></url>
+  <url><loc>https://negiluai.example/privacy</loc></url>
+  <url><loc>https://negiluai.example/terms</loc></url>
+</urlset>

@@ -1,7 +1,8 @@
-from django.urls import path
-from .views import product_list_create, product_detail
+from rest_framework.routers import DefaultRouter
+from .views import ProductViewSet, WishlistViewSet
 
-urlpatterns = [
-    path("", product_list_create),
-    path("<int:pk>/", product_detail),
-]
+router = DefaultRouter()
+router.register("wishlist", WishlistViewSet, basename="wishlist")
+router.register("", ProductViewSet, basename="product")
+
+urlpatterns = router.urls

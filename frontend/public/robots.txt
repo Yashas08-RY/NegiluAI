@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /profile
+Disallow: /cart
+Disallow: /orders
+Disallow: /wishlist
+Disallow: /farmer/
+Sitemap: https://negiluai.example/sitemap.xml

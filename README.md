@@ -1,158 +1,59 @@
-# 🌾 NegiluAI
+# NegiluAI — AI-Powered Agri-Marketplace
 
-### AI-Powered Agricultural Marketplace and Rural Supply Chain Platform
+**Smart Market Linkages, APMC Price Discovery & Perishable Logistics for Farmers & FPOs**
 
-NegiluAI is an AI-powered agricultural marketplace designed to connect farmers and Farmer Producer Organizations (FPOs) directly with consumers, retailers, and bulk buyers.
+[![SIH 2026](https://img.shields.io/badge/SIH-2026-orange.svg)](https://sih.gov.in)
+[![Problem Statement ID](https://img.shields.io/badge/PS_ID-26132-blue.svg)](https://sih.gov.in)
+[![Organization](https://img.shields.io/badge/Govt_of-Maharashtra-red.svg)](https://www.maharashtra.gov.in)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-The platform focuses on reducing unnecessary intermediaries, improving market access for farmers, forecasting crop prices and demand, and making fresh-produce transportation more efficient.
-
----
-
-## 🚜 Problem
-
-Farmers often depend on multiple intermediaries to reach the final buyer. This can reduce their share of the final selling price and limit their access to wider markets.
-
-At the same time, farmers face uncertainty about:
-
-- Future crop prices
-- Market demand
-- When to harvest and sell
-- Finding suitable buyers
-- Transportation of fresh produce
-
-Scattered transportation can also increase delivery time, cost, and the risk of produce losses.
+Developed by **Team RecursiX** (Team ID: 166945) for **Smart India Hackathon 2026**.  
+**Problem Statement 26132:** *Strengthening market linkages and price discovery for farmers* (Issued by Government of Maharashtra / MSInS).
 
 ---
 
-## 💡 Our Solution
+## 📌 Overview
 
-NegiluAI brings **marketplace, market intelligence, and smart logistics** together in a single platform.
+**NegiluAI** is an integrated, end-to-end digital marketplace designed to connect Farmer Producer Organizations (FPOs) across Maharashtra directly with verified institutional buyers, supermarket chains, and food processors. 
 
-### 1. 🛒 Direct Farm-to-Buyer Marketplace
-
-Farmers and FPOs can list their available produce and connect directly with:
-
-- Consumers
-- Retailers
-- Bulk buyers
-
-This reduces unnecessary intermediary dependency and improves direct market access.
-
-### 2. 📈 Price & Demand Forecasting
-
-NegiluAI uses historical market data and machine learning to forecast:
-
-- Crop prices
-- Future demand
-- Possible demand patterns
-
-The proposed forecasting pipeline uses **Prophet and XGBoost** to help farmers make better harvesting and selling decisions.
-
-### 3. 🚚 Dynamic Route Optimization
-
-Fresh produce needs to reach buyers quickly and efficiently.
-
-NegiluAI uses **Google OR-Tools** to optimize multi-stop delivery routes by considering nearby farms, buyer orders, and delivery requirements.
-
-The goal is to reduce unnecessary travel and improve the movement of perishable produce.
+Smallholder farmers often face opaque APMC mandi pricing, urgent liquidity constraints, and high post-harvest transit losses. NegiluAI solves these challenges by combining **AI-driven price discovery**, **Agmark digital lot grading**, **shelf-life-aware route optimization**, and **escrow payment protection** into a simple, voice-guided Progressive Web App (PWA) built for rural mobile networks.
 
 ---
 
-## 🔄 How NegiluAI Works
+## ✨ Key Features
 
-```text
-Farmer / FPO
-      ↓
-List Available Produce
-      ↓
-NegiluAI Marketplace
-      ↓
-Buyer Matching
-      ↓
-Demand & Price Forecasting
-      ↓
-Order Confirmation
-      ↓
-Route Optimization
-      ↓
-Efficient Farm Pickup
-      ↓
-Buyer Delivery
+1. **APMC Price Discovery & Sale-Window Alerts:**
+   * Uses time-series machine learning models (**Meta Prophet** & **XGBoost**) trained on daily mandi arrival data to forecast 7-day price corridors.
+   * Sends proactive alerts to farmers recommending the optimal days to harvest and sell to prevent distress sales.
 
-Technology Stack
+2. **Agmark Digital Lotting & Quality Grading:**
+   * Standardizes harvest batches at local FPO collection hubs into **Grade A** (Retail/Q-Commerce) and **Grade B** (Food Processors).
+   * Eliminates destination quality rejections and pricing disputes between buyers and sellers.
 
-| Layer                      | Technology                |
-| -------------------------- | ------------------------- |
-| Frontend                   | React.js                  |
-| Application Type           | Progressive Web App (PWA) |
-| Backend                    | FastAPI                   |
-| Database                   | PostgreSQL                |
-| Geospatial Data            | PostGIS                   |
-| Price & Demand Forecasting | Prophet, XGBoost          |
-| Route Optimization         | Google OR-Tools           |
-| Containerization           | Docker                    |
-| Deployment                 | Cloud Infrastructure      |
+3. **Perishable-Aware Route Optimization:**
+   * Powered by **Google OR-Tools** (Vehicle Routing Problem) and **PostGIS** spatial mapping.
+   * Clusters multi-farm pickups into shared trucks and prioritizes dispatch based on crop perishability limits to prevent rot in transit.
 
-System Architecture:
-                    ┌──────────────────────┐
-                    │     React.js PWA     │
-                    │ Farmer / Buyer App   │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │       FastAPI        │
-                    │    Backend APIs      │
-                    └──────────┬───────────┘
-                               │
-                ┌──────────────┼──────────────┐
-                ▼              ▼              ▼
-        ┌────────────┐ ┌────────────┐ ┌──────────────┐
-        │ PostgreSQL │ │  Prophet + │ │ Google       │
-        │ + PostGIS  │ │  XGBoost   │ │ OR-Tools     │
-        └────────────┘ └────────────┘ └──────────────┘
-                │              │              │
-                ▼              ▼              ▼
-          Marketplace     Forecasting      Smart Routes
+4. **Escrow Payments & Batch Reservation:**
+   * Integrates **Razorpay Escrow** to lock buyer funds upon order placement, releasing payments automatically upon digital Proof-of-Delivery (POD) and quality acceptance.
+   * Uses **Redis distributed locking** to prevent double-selling of high-demand crop batches during peak buyer checkouts.
 
-🎯 What Makes NegiluAI Different?
-Most agricultural platforms focus mainly on buying and selling.
+5. **Multilingual Voice Navigation:**
+   * Built as a lightweight React PWA featuring **Bhashini voice support** in Marathi and Hindi for seamless operation in low-bandwidth rural areas.
 
-NegiluAI combines three connected components:
-       MARKET ACCESS
-             +
-      MARKET INTELLIGENCE
-             +
-       SMART LOGISTICS
-             ↓
-       NEGILUAI
+---
 
-       🌱 Expected Impact
-Farmers & FPOs:
-Better access to potential buyers
-More direct selling opportunities
-Better information about price and demand
-Improved planning of harvest and sales
-Consumers & Buyers:
-More direct sourcing from farmers
-Better visibility of available produce
-Efficient order fulfillment
-Logistics:
-Better utilization of delivery routes
-Reduced unnecessary travel
-Faster movement of fresh produce
-Supply Chain:
-Reduced dependency on unnecessary intermediary layers
-Better coordination between supply, demand, and transportation
-Reduced avoidable produce wastage
+## 🛠️ Technology Stack
 
+| Component | Technology / Framework |
+| :--- | :--- |
+| **Frontend** | React.js (PWA), Bhashini Voice Integration (Marathi/Hindi), Tailwind CSS |
+| **Backend API** | FastAPI (Python Async) |
+| **Database & GIS** | PostgreSQL + PostGIS (Farm Plot Geofencing & Mandi Proximity) |
+| **Concurrency Caching** | Redis Cache (Batch Locks) |
+| **Machine Learning** | Meta Prophet, XGBoost, Scikit-Learn, Pandas |
+| **Logistics Solver** | Google OR-Tools (Capacitated Vehicle Routing with Time Windows) |
+| **Payments & Auth** | Razorpay Escrow API, JWT Authentication |
+| **Containerization** | Docker & Cloud Infrastructure |
 
-🔮Future Scope
-Future development can include:
-Local-language and voice-based farmer assistance
-Improved demand forecasting using additional market signals
-Real-time route updates
-Integration with additional agricultural data sources
-Wider FPO and buyer onboarding
-Advanced freshness-aware logistics
-More detailed farmer analytics
+---

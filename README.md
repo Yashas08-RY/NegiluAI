@@ -4,7 +4,7 @@
 
 [![SIH 2026](https://img.shields.io/badge/SIH-2026-orange.svg)](https://sih.gov.in)
 [![Problem Statement ID](https://img.shields.io/badge/PS_ID-26132-blue.svg)](https://sih.gov.in)
-[![Organization](https://img.shields.io/badge/Govt_of-Maharashtra-red.svg)](https://www.maharashtra.gov.in)
+
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 Developed by **Team RecursiX** (Team ID: 166945) for **Smart India Hackathon 2026**.  
